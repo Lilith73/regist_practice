@@ -31,7 +31,7 @@
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text" style="display: none;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <form> <!-- ***************************** -->
+                      <form action="./regist.php" method="get"> <!-- ***************************** -->
                         <div class="mb-2">
                             <label for="firstName" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp">
@@ -42,9 +42,15 @@
                             <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp">
                             
                           </div>
+                        </div>
+                        <div class="mb-2">
+                          <label for="userName" class="form-label">User Name</label>
+                          <input type="text" class="form-control" id="userName" aria-describedby="emailHelp">
+                          
+                        </div>
                         <div class="mb-2">
                           <label for="email1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="email1" aria-describedby="emailHelp">
+                          <input type="email" name="password" class="form-control" id="email1" aria-describedby="emailHelp">
                           <div id="emailHelp" class="form-text">Csak valódi e-mail címet adjon meg!</div>
                         </div>
                         <div class="mb-2">

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            padding: .3rem 1rem;
+            font-size: 1rem;
+        }
+        .hidden{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><span id="userName"></span> Üdvözöllek a főoldalon!</h1>
+    </header>
+    <main>
+        <button class="hidden" type="button">Kijelentkezés</button>
+    </main>
+    <script>
+        fetch("./loggedUser.php", {
+            method: "GET",
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Hiba a válaszban!");
+            }
+            return response.json();
+        })
+        .then(datas => {
+            if (datas["errorCode"] !== 0) {
+                const h2 = document.createElement("h2");
+                h2.innerText = " Ön még nem jelentkezett be!";
+                document.querySelector("header").appendChild(h2);
+                location.href = "./login.html";
+            }
+            document.querySelector("#userName").innerText = datas["dataLine"]["messageLine"];
+            document.querySelector("button").classList.remove("hidden");
+        })
+    </script>
+</body>
+</html>

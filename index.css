@@ -4,3 +4,4 @@ body{
 .container{
     height: 100vh;
 }
+#loginButton{display: none;}

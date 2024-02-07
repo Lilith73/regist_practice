@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bejelentkezés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Bejelentkezés</h2>
+        <form>
+            <label for="username">Felhasználónév:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Jelszó:</label>
+            <input type="password" id="password" name="password" required>
+
+            <div class="buttons">
+                <button type="button">Bejelentkezés</button>
+                <button type="button">Regisztráció</button>
+            </div>
+        </form>
+        <script>
+            const registButton = document.querySelector(".buttons button:nth-child(2)");
+            registButton.addEventListener("click", () => {
+                location.href = "./index.html";
+            })
+
+            const loginButton = document.querySelector(".buttons button:nth-child(1)");
+
+            function login() {
+                const userInputValue = document.querySelector("#username").value;
+                const passwordInputValue = document.querySelector("#password").value;
+                fetch("./login.php", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        userName: userInputValue,
+                        userPassword: passwordInputValue
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Hiba a kérésben!");
+                    }
+                    console.log(`response tartalmaa: ${response}`);
+                    return response.json();
+                })
+                .then(datas => {
+                    console.log(datas);
+                    if (datas["errorCode"] === 0) {
+                        location.href = "./main.html"
+                    } else {
+                        console.log("Sikertelen bejelentkezés!"); // TODO
+                    }
+                })
+                .catch(error => console.log(error))
+            }
+
+            loginButton.addEventListener("click", login);
+        </script>
+    </div>
+</body>
+
+</html>

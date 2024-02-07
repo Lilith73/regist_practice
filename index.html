@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,8 @@
                     <div class="card text-bg-light">
                         <img src="./img/pic1-min.jpg" class="card-img" style="width: 100%;" alt="...">
                         <div class="card-img-overlay">
-                          <h5 class="card-title">Életed legnagyobb dobása!</h5>                          
+                          <h5 class="card-title">Életed legnagyobb dobása!</h5>
+                          <h5 id="successful"></h5>                          
                         </div>
                       </div>
                   </div>
@@ -31,47 +32,48 @@
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text" style="display: none;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <form action="./regist.php" method="get"> <!-- ***************************** -->
+                      <!--
+                      <form action="./regist_POST.php" method="get">  ***************************** -->
+                      <form action="">
                         <div class="mb-2">
                             <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp">
-                            
+                            <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp" name="Keresztnév">                            
                           </div>
                           <div class="mb-2">
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp">
-                            
+                            <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" name="Vezetéknév">                            
                           </div>
-                        </div>
-                        <div class="mb-2">
-                          <label for="userName" class="form-label">User Name</label>
-                          <input type="text" class="form-control" id="userName" aria-describedby="emailHelp">
-                          
-                        </div>
+                          <div class="mb-2">
+                            <label for="userName" class="form-label">User Name</label>
+                            <input type="text" name="Felhasználónév" class="form-control" id="userName" aria-describedby="emailHelp">                            
+                          </div>
                         <div class="mb-2">
                           <label for="email1" class="form-label">Email address</label>
-                          <input type="email" name="password" class="form-control" id="email1" aria-describedby="emailHelp">
+                          <input type="email" class="form-control" id="email1" aria-describedby="emailHelp" name="Email-cím">
                           <div id="emailHelp" class="form-text">Csak valódi e-mail címet adjon meg!</div>
                         </div>
                         <div class="mb-2">
                             <label for="email2" class="form-label">Email address again</label>
-                            <input type="email" class="form-control" id="email2" aria-describedby="emailHelp">
+                            <input type="email" class="form-control" id="email2" aria-describedby="emailHelp" name="Email-cím">
                             
                           </div>
                         <div class="mb-2">
                           <label for="password1" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="password1">
+                          <input type="password" name="Jelszó" class="form-control" id="password1">
                           <div id="emailHelp" class="form-text">Legalább 8 karakter hosszú legyen!</div>
                         </div>
                         <div class="mb-2">
                             <label for="password2" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password2">
+                            <input type="password" class="form-control" id="password2" name="Jelszó">
                           </div>
                         <div class="mb-2 form-check">
                           <input type="checkbox" class="form-check-input" id="exampleCheck1">
                           <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
-                        <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+                        <div class="d-flex justify-content-evenly">
+                          <button id="submitButton" type="button" class="btn btn-primary">Regisztráció</button>
+                          <button id="loginButton" type="button" class="btn btn-primary">Bejelentkezés</button>
+                        </div>
                       </form>
                     </div>
                   </div>
